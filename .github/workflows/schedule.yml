@@ -1,13 +1,10 @@
 name: Railway Bot Scheduler
 
 on:
-  schedule:
-    # Spouštění v 08:00 a zastavení v 23:59 každý den
-    - cron: "0 8 * * *"
-    - cron: "59 23 * * *"
-
-on:
-  workflow_dispatch:
+  workflow_dispatch:  # manuální spuštění
+  schedule:           # automatické spuštění podle cronu
+    - cron: "0 8 * * *"    # spustit bota v 08:00
+    - cron: "59 23 * * *"  # zastavit bota v 23:59
 
 jobs:
   deploy:
