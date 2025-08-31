@@ -6,27 +6,18 @@ on:
     - cron: "0 8 * * *"
     - cron: "59 23 * * *"
 
+on:
+  workflow_dispatch:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
       - name: Install Railway CLI
         run: curl -sL https://railway.app/install.sh | sh
-
       - name: Login to Railway
         run: railway login --apiKey ${{ secrets.RAILWAY_API_KEY }}
-
-      - name: Deploy or Stop project
-        run: |
-          HOUR=$(date +%H)
-          if [ "$HOUR" = "08" ]; then
-            echo "Spouštím bota..."
-            railway up --project ${{ secrets.RAILWAY_PROJECT_ID }} --detach
-          fi
-          if [ "$HOUR" = "23" ]; then
-            echo "Zastavuji bota..."
-            railway down --project ${{ secrets.RAILWAY_PROJECT_ID }}
-          fi
+      - name: Deploy project
+        run: railway up --project ${{ secrets.RAILWAY_PROJECT_ID }} --detach
