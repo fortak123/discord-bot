@@ -1,0 +1,8 @@
+[phases.setup]
+command = "echo 'Setup phase'"
+
+[phases.build]
+command = "pip install -r discord-bot/requirements.txt"
+
+[phases.start]
+command = "python discord-bot/main.py"
