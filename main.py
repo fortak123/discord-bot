@@ -18,11 +18,9 @@ intents.members = True
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 # Role & cooldowny
-NORMAL_ROLE = "normal"
 PREMIUM_ROLE = "premium"
 
-COOLDOWN_NORMAL = 10 * 60   # 10 minut
-COOLDOWN_PREMIUM = 1 * 60  # 1 minuta
+COOLDOWN_PREMIUM = 5 * 60  # 5 minut
 
 # ==== AUTOMATICKÉ NAČTENÍ SLUŽEB Z DATA SLOŽKY ====
 BASE_DIR = "data"
